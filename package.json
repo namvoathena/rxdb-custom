@@ -5,15 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "browserify ./src/main.js > ./dist/bundle.js -d -t babelify",
+    "dev": "browserify ./src/main.js > ./dist/rxdb-custom-lib.browserify.min.js -d -t babelify",
     "build": "browserify -t babelify ./src/main.js | uglifyjs -cm > ./dist/rxdb-custom-lib.browserify.min.js",
-    "watch": "watchify ./src/main.js -o ./dist/bundle.js -d -v -t babelify"
+    "watch": "watchify ./src/main.js -o ./dist/rxdb-custom-lib.browserify.min.js -d -v -t babelify"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "animejs": "^3.2.2",
     "rxdb": "^14.17.1",
     "rxjs": "^7.8.1"
   },

@@ -1,13 +1,14 @@
 const enableDevMode = async () => {
-  return await window.RxDBCustom.addRxPlugin(
-    window.RxDBCustom.RxDBDevModePlugin
+  return await window.RxDBLib.RxDBCore.addRxPlugin(
+    window.RxDBLib.RxDBPluginsDevMode.RxDBDevModePlugin
   );
 };
 
 const createSampleDatabase = async () => {
-  const dbType = "dexie";
-  const dbName = "store";
-  return await window.RxDBCustom.createRxDB(dbType, { name: dbName });
+  return await window.RxDBLib.RxDBCore.createRxDatabase({
+    name: "todos",
+    storage: window.RxDBLib.RxDBPluginsStorageDexie.getRxStorageDexie(),
+  });
 };
 
 const createSampleCollection = async (db) => {
@@ -49,7 +50,6 @@ const createSampleDocument = async (collection) => {
     done: false,
     timestamp: new Date().toISOString(),
   };
-  console.log(collection);
   return await collection.insert(document);
 };
 
@@ -80,7 +80,6 @@ const main = async () => {
   const document = await createSampleDocument(collection);
   await updateSampleDocument(document);
   const foundDocuments = await findSampleDocuments(collection);
-  console.log(foundDocuments);
 };
 
 main();
