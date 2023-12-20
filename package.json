@@ -1,0 +1,27 @@
+{
+  "name": "browserify-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "browserify ./src/main.js > ./dist/bundle.js -d -t babelify",
+    "build": "browserify -t babelify ./src/main.js | uglifyjs -cm > ./dist/rxdb-custom-lib.browserify.min.js",
+    "watch": "watchify ./src/main.js -o ./dist/bundle.js -d -v -t babelify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "animejs": "^3.2.2",
+    "rxdb": "^14.17.1",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "babelify": "^10.0.0",
+    "tinyify": "^4.0.0",
+    "uglify-js": "^3.17.4"
+  }
+}
