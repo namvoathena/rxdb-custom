@@ -7,7 +7,9 @@ const enableDevMode = async () => {
 const createSampleDatabase = async () => {
   return await window.RxDBLib.RxDBCore.createRxDatabase({
     name: "todos",
-    storage: window.RxDBLib.RxDBPluginsStorageDexie.getRxStorageDexie(),
+    storage: window.RxDBLib.RxDBPluginsStorageLokijs.getRxStorageLoki({
+      adapter: new window.RxDBLib.LokiIncrementalIndexedDBAdapter(),
+    }),
   });
 };
 
@@ -74,12 +76,14 @@ const findSampleDocuments = async (collection) => {
 };
 
 const main = async () => {
-  await enableDevMode();
+  console.log(window);
+
   const db = await createSampleDatabase();
   const collection = await createSampleCollection(db);
   const document = await createSampleDocument(collection);
   await updateSampleDocument(document);
   const foundDocuments = await findSampleDocuments(collection);
+  console.log(foundDocuments);
 };
 
 main();

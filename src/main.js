@@ -21,6 +21,8 @@ import * as RxDBPluginsStorageLokijs from "rxdb/plugins/storage-lokijs";
 import * as RxDBPluginsStorageMemory from "rxdb/plugins/storage-memory";
 import * as RxDBPluginsStorageRemote from "rxdb/plugins/storage-remote";
 
+const LokiIncrementalIndexedDBAdapter = require("lokijs/src/incremental-indexeddb-adapter");
+
 /**  TODO: Resolve errors from import and export  */
 // import * as RxDBPluginsReplicationGraphQL from "rxdb/plugins/replication-graphql";
 // import * as RxDBPluginsReplicationWebSocket from "rxdb/plugins/replication-websocket";
@@ -53,6 +55,7 @@ const RxDBLib = {
   RxDBPluginsStorageMemory,
   RxDBPluginsStorageRemote,
   RxDBPluginsQueryBuilder,
+  LokiIncrementalIndexedDBAdapter,
 };
 
 window.RxDBLib = RxDBLib;
